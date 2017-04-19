@@ -14,15 +14,19 @@ class DemoBackend(object):
 		'''
 		Attempt to generate a random user for the request.
 		'''
-		user = None
-		attempts = 0
-		while user is None and attempts < 10:
-			try:
-				user = User.objects.create(username=get_random_string(150))
-			except IntegrityError:
-				attempts += 1
+		print('called!')
+		if getattr(settings, 'DEMO_MODE', False):
+			user = None
+			attempts = 0
+			while user is None and attempts < 10:
+				try:
+					user = User.objects.create(username=get_random_string(150))
+				except IntegrityError:
+					attempts += 1
 
-		return user
+			return user
+		else:
+			return None
 
 	def get_user(self, user_id):
 		'''
