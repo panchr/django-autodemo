@@ -6,14 +6,18 @@
 
 from django.http import HttpResponseRedirect
 from django.conf import settings
-from django.contrib.auth import authenticate, login, REDIRECT_FIELD_NAME
+from django.contrib.auth import (authenticate, login,
+	REDIRECT_FIELD_NAME, logout)
 from django.contrib.auth.models import User
 from django.utils.crypto import get_random_string
 from django.db import IntegrityError
 
-_IN_DEMO_MODE = getattr(SETTINGS, 'DEMO_ENABLED', False)
-_MAX_ATTEMPTS = getattr(SETTINGS, 'DEMO_MAX_USER_ATTEMPTS', 10)
-_USERNAME_LENGTH = getattr(SETTINGS, 'DEMO_USERNAME_LENGTH', 16)
+from django_demo_mode import signals
+
+_IN_DEMO_MODE = getattr(settings, 'DEMO_ENABLED', False)
+_MAX_ATTEMPTS = getattr(settings, 'DEMO_MAX_USER_ATTEMPTS', 10)
+_USERNAME_LENGTH = getattr(settings, 'DEMO_USERNAME_LENGTH', 16)
+_DELETE_USER = getattr(settings, 'DEMO_DELETE_USER', False)
 
 def login_view(request):
 	'''
@@ -38,5 +42,26 @@ def login_view(request):
 
 	if user:
 		login(request, user)
+		signals.demo_user_created.send(sender=login_view, request=request,
+			user=user)
+
+	return HttpResponseRedirect(next_page)
+
+def logout_delete_view(request):
+	'''
+	On an authenticated request, logout and delete the user.
+	'''
+	next_page = request.GET.get(REDIRECT_FIELD_NAME)
+	if not request.user.is_authenticated():
+		# Redirect user if not currently authenticated.
+		return HttpResponseRedirect(next_page)
+
+	if _IN_DEMO_MODE:
+		logout(request, request.user)
+		signals.demo_user_logout.send(sender=login_view, request=request,
+			user=request.user)
+		
+		if _DELETE_USER:
+			request.user.delete()
 
 	return HttpResponseRedirect(next_page)
