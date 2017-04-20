@@ -60,14 +60,15 @@ class TestIntegration(TestCase):
 		User.objects.all().delete()
 		User.objects.bulk_create(User(username='test-user-%d' % i) for i in range(25))
 
-		original_users = list(User.objects.all())
+		original_users = sorted(User.objects.all(), key=lambda x: x.username)
 
 		response, user = self.get_login_user()
 		self.assertIsNotNone(user)
 		self.assertEqual(response.status_code, 200)
 
 		user.delete()
-		self.assertCountEqual(original_users, list(User.objects.all()))
+		self.assertEqual(original_users,
+			sorted(User.objects.all(), key=lambda x: x.username))
 
 	def test_logout(self):
 		'''Logging out should not delete a user.'''
@@ -104,11 +105,12 @@ class TestIntegration(TestCase):
 			User.objects.all().delete()
 			User.objects.bulk_create(User(username='test-user-%d' % i) for i in range(25))
 
-			original_users = list(User.objects.all())
+			original_users = sorted(User.objects.all(), key=lambda x: x.username)
 
 			response, user = self.get_login_user()
 			self.assertIsNotNone(user)
 			self.assertEqual(response.status_code, 200)
 
 			self.client.get(_LOGOUT_URL, follow=True)
-			self.assertCountEqual(original_users, list(User.objects.all()))
+			self.assertEqual(original_users,
+				sorted(User.objects.all(), key=lambda x: x.username))

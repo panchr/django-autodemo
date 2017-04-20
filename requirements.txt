@@ -1,0 +1,8 @@
+# requirements.txt
+# django-demo-mode
+# Author: Rushy Panchal
+# Date: April 20th, 2017
+# Description: These requirements are for running the test suite only.
+
+detox==0.10.0
+tox==2.5.0

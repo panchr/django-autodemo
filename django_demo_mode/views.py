@@ -4,6 +4,7 @@
 # Date: April 19th, 2017
 # Description: Authentication views for django-demo-mode.
 
+from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.contrib.auth import (authenticate, login,
 	REDIRECT_FIELD_NAME, logout)
@@ -37,6 +38,7 @@ def login_view(request):
 				attempts += 1
 
 	if user:
+		user.backend = settings.AUTHENTICATION_BACKENDS[0]
 		login(request, user)
 		signals.demo_user_created.send(sender=login_view, request=request,
 			user=user)
