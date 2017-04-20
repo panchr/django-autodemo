@@ -47,6 +47,7 @@ AUTHENTICATION_BACKENDS = (
 	'django.contrib.auth.backends.ModelBackend',
 	)
 
-DEMO_ENABLED = True
-DEMO_DELETE_USER = True
+DEMO_SETTINGS = {
+	'ENABLED': True,
+	}
 LOGIN_URL = reverse_lazy('django-demo-mode:login')
