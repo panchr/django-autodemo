@@ -10,7 +10,4 @@ from django.views import View
 
 class DemoView(LoginRequiredMixin, View):
 	def get(self, request):
-		if request.user:
-			return HttpResponse('Authenticated as %d.' % request.user.username)
-		else:
-			return HttpResponse('Unauthenticated')
+		return HttpResponse('Authenticated as %s.' % request.user.username)

@@ -5,7 +5,6 @@
 # Description: Test URL configuration.
 
 from django.conf.urls import url, include
-
 from django_demo_mode.tests import views
 
 urlpatterns = [

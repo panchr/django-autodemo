@@ -45,7 +45,6 @@ MIDDLEWARE_CLASSES = (
 
 AUTHENTICATION_BACKENDS = (
 	'django.contrib.auth.backends.ModelBackend',
-	'django_demo_mode.backends.DemoBackend',
 	)
 
 DEMO_MODE = True
