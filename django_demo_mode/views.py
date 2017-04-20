@@ -4,8 +4,8 @@
 # Date: April 19th, 2017
 # Description: Authentication views for django-demo-mode.
 
-from django.http import HttpResponseRedirect
 from django.conf import settings
+from django.http import HttpResponseRedirect
 from django.contrib.auth import (authenticate, login,
 	REDIRECT_FIELD_NAME, logout)
 from django.contrib.auth.models import User
@@ -47,9 +47,9 @@ def login_view(request):
 
 	return HttpResponseRedirect(next_page)
 
-def logout_delete_view(request):
+def logout_view(request):
 	'''
-	On an authenticated request, logout and delete the user.
+	On an authenticated request, logout and (optionally) delete the user.
 	'''
 	next_page = request.GET.get(REDIRECT_FIELD_NAME)
 	if not request.user.is_authenticated():
@@ -57,10 +57,10 @@ def logout_delete_view(request):
 		return HttpResponseRedirect(next_page)
 
 	if _IN_DEMO_MODE:
-		logout(request, request.user)
+		logout(request)
 		signals.demo_user_logout.send(sender=login_view, request=request,
 			user=request.user)
-		
+
 		if _DELETE_USER:
 			request.user.delete()
 

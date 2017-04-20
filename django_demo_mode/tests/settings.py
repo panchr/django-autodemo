@@ -48,4 +48,5 @@ AUTHENTICATION_BACKENDS = (
 	)
 
 DEMO_ENABLED = True
+DEMO_DELETE_USER = True
 LOGIN_URL = reverse_lazy('django-demo-mode:login')
