@@ -47,5 +47,5 @@ AUTHENTICATION_BACKENDS = (
 	'django.contrib.auth.backends.ModelBackend',
 	)
 
-DEMO_MODE = True
-LOGIN_URL = reverse_lazy('django-demo-mode:login-view')
+DEMO_ENABLED = True
+LOGIN_URL = reverse_lazy('django-demo-mode:login')

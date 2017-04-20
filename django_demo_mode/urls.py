@@ -9,5 +9,5 @@ from django_demo_mode.views import login_view
 
 app_name = 'django-demo-mode'
 urlpatterns = [
-	url(r'^login$', login_view, name='login-view')
+	url(r'^login$', login_view, name='login')
 	]
