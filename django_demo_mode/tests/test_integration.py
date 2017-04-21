@@ -79,7 +79,7 @@ class TestIntegration(TestCase):
 		self.assertEqual(response.status_code, 200)
 		self.assertEqual(num_users+1, User.objects.count())
 
-		self.client.logout()
+		self.client.get(_LOGOUT_URL, follow=True)
 		self.assertEqual(num_users+1, User.objects.count())
 
 	def test_logout_delete(self):
