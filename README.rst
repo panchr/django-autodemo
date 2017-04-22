@@ -1,4 +1,4 @@
-django-demo-mode
+django-autodemo
 ----------------
 
 Author: Rushy Panchal

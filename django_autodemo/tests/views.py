@@ -1,5 +1,5 @@
-# django-demo-mode/tests/views.py
-# django-demo-mode
+# django-autodemo/tests/views.py
+# django-autodemo
 # Author: Rushy Panchal
 # Date: April 19th ,2017
 # Description: Test views.
@@ -12,6 +12,6 @@ from django.core.urlresolvers import reverse
 def demo_view(request):
 	return HttpResponse('''Authenticated as {u}.
 		<a href="{logout}?next=/">Logout.</a>'''.format(
-			logout=reverse('django-demo-mode:logout'),
+			logout=reverse('django-autodemo:logout'),
 			u=request.user.username)
 			)

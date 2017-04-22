@@ -1,8 +1,8 @@
-# django_demo_mode/signals.py
-# django-demo-mode
+# django_autodemo/signals.py
+# django-autodemo
 # Author: Rushy Panchal
 # Date: April 20th, 2017
-# Description: Signals for django-demo-mode.
+# Description: Signals for django-autodemo.
 
 from django.dispatch import Signal
 

@@ -1,5 +1,5 @@
-# django_demo_mode/settings.py
-# django-demo-mode
+# django_autodemo/settings.py
+# django-autodemo
 # Author: Rushy Panchal
 # Date: April 20th, 2017
 # Description: Automatically load settings

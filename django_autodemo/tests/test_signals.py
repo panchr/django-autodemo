@@ -1,5 +1,5 @@
-# django_demo_mode/tests/test_integration.py
-# django-demo-mode
+# django_autodemo/tests/test_integration.py
+# django-autodemo
 # Author: Rushy Panchal
 # Date: April 20th, 2017
 # Description: Test signals.
@@ -11,13 +11,13 @@ from django.core.urlresolvers import reverse_lazy
 from django.test import TestCase
 from django.contrib.auth.models import User
 
-from django_demo_mode.settings import DEMO_SETTINGS
-from django_demo_mode import signals
+from django_autodemo.settings import DEMO_SETTINGS
+from django_autodemo import signals
 
 import mock
 
 _LOGIN_URL = settings.LOGIN_URL
-_LOGOUT_URL = reverse_lazy('django-demo-mode:logout')
+_LOGOUT_URL = reverse_lazy('django-autodemo:logout')
 _USER_RE = re.compile(r'^Authenticated as ([a-zA-Z0-9]+)\..*$', re.DOTALL)
 
 class TestSignals(TestCase):

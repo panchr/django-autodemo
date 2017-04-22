@@ -1,5 +1,5 @@
-# django-demo-mode/tests/settings.py
-# django-demo-mode
+# django-autodemo/tests/settings.py
+# django-autodemo
 # Author: Rushy Panchal
 # Date: April 19th, 2017
 # Description: Test application settings.
@@ -18,7 +18,7 @@ DATABASES = {
 
 SECRET_KEY = "BITlFxZunJXWaoiKhMAE"
 
-ROOT_URLCONF = 'django_demo_mode.tests.urls'
+ROOT_URLCONF = 'django_autodemo.tests.urls'
 STATIC_URL = '/static/'
 
 INSTALLED_APPS = (
@@ -29,7 +29,7 @@ INSTALLED_APPS = (
 	'django.contrib.staticfiles',
 	'django.contrib.admin',
 
-	'django_demo_mode',
+	'django_autodemo',
 	)
 
 MIDDLEWARE_CLASSES = (
@@ -50,4 +50,4 @@ AUTHENTICATION_BACKENDS = (
 DEMO_SETTINGS = {
 	'ENABLED': True,
 	}
-LOGIN_URL = reverse_lazy('django-demo-mode:login')
+LOGIN_URL = reverse_lazy('django-autodemo:login')

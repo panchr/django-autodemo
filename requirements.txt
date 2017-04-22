@@ -1,5 +1,5 @@
 # requirements.txt
-# django-demo-mode
+# django-autodemo
 # Author: Rushy Panchal
 # Date: April 20th, 2017
 # Description: These requirements are for running the test suite only.

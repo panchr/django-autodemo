@@ -1,8 +1,8 @@
-# django_demo_mode/views.py
-# django-demo-mode
+# django_autodemo/views.py
+# django-autodemo
 # Author: Rushy Panchal
 # Date: April 19th, 2017
-# Description: Authentication views for django-demo-mode.
+# Description: Authentication views for django-autodemo.
 
 from django.conf import settings
 from django.http import HttpResponseRedirect
@@ -12,8 +12,8 @@ from django.contrib.auth.models import User
 from django.utils.crypto import get_random_string
 from django.db import IntegrityError
 
-from django_demo_mode import signals
-from django_demo_mode.settings import DEMO_SETTINGS
+from django_autodemo import signals
+from django_autodemo.settings import DEMO_SETTINGS
 
 def login_view(request):
 	'''

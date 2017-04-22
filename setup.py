@@ -1,5 +1,5 @@
 # setup.py
-# django-demo-mode
+# django-autodemo
 # Author: Rushy Panchal
 # Date: April 20th, 2017
 # Description: Setuptools configuration.
@@ -7,13 +7,13 @@
 from setuptools import setup, find_packages
 
 setup(
-	name = 'django-demo-mode',
+	name = 'django-autodemo',
 	packages = find_packages(),
 	version = '0.1.0',
 	description = 'Demo mode to allow arbitrary authentication on website.',
 	author = 'Rushy Panchal',
 	author_email = 'rpanchal@princeton.edu',
-	url = 'https://github.com/panchr/django-demo-mode',
+	url = 'https://github.com/panchr/django-autodemo',
 	keywords = ['django', 'authentication', 'demo'],
 	license = 'LGPLv3',
 	classifiers = [

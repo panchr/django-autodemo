@@ -1,5 +1,5 @@
 # runtests.py
-# django-demo-mode
+# django-autodemo
 # Author: Rushy Panchal
 # Date: April 20th, 2017
 # Description: Test runner for Django application.
@@ -12,7 +12,7 @@ import django
 from django.test.runner import DiscoverRunner
 
 if __name__ == "__main__":
-	os.environ['DJANGO_SETTINGS_MODULE'] = 'django_demo_mode.tests.settings'
+	os.environ['DJANGO_SETTINGS_MODULE'] = 'django_autodemo.tests.settings'
 	django.setup()
 	runner = DiscoverRunner()
 	failures = runner.run_tests([])
