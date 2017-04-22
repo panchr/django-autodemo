@@ -1,0 +1,19 @@
+# circle.yml
+# django-autodemo
+# Author: Rushy Panchal
+# Date: April 22nd, 2017
+# Description: CircleCI configuration.
+
+machine:
+  environment:
+    ENV: test
+    BUILD_CI: true
+
+dependencies:
+  pre:
+    - pip install tox
+    - pyenv global 2.7.11 3.4.4 3.5.2 3.6.0
+
+test:
+  override:
+    - tox
